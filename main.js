@@ -41,9 +41,22 @@ function showData() {
 // ADMIN COMMANDS
 window.admin = {
     delete: function () {
-        listContainer.innerHTML = '';
-        saveData();
-        console.log("✅ All tasks deleted by admin.");
+        let items = document.querySelectorAll('#list-container li');
+        if (items.length === 0) {
+            console.log("⚠️ No tasks to delete.");
+            return;
+        }
+        items.forEach((item, index) => {
+            item.classList.add('checkedbye');
+            setTimeout(() => {
+                item.remove();
+                saveData();
+                if (index === index.length - 1){
+                    saveData();
+                    console.log("✅ All tasks deleted by admin.");
+                }
+            }, 500)
+        })
     },
     add: function (task) {
         if (!task) return console.warn("⚠️ You must provide a task!");
@@ -69,12 +82,34 @@ window.admin = {
         saveData();
         console.log("✅ All tasks marked as completed.");
     },
-    changeBack: function() {
+    changeBack: function () {
         document.body.style.backgroundImage = "url('latest.jpeg ')";
         document.body.style.backgroundSize = "cover"; // Optional but nice
         document.body.style.backgroundRepeat = "no-repeat";
         console.log("🎨 Background image changed by admin.");
-    }    
+    },
+    Remove: function(a){
+        if (!a){
+            console.log("⚠️ You must provide a task to remove!");
+            return;
+        }
+
+        const items = document.querySelectorAll("#list-container li");
+        let found = false;
+
+        items.forEach((item) => {
+            const itemText = item.textContent.replace('\u00d7', '').trim();
+            if (itemText.toLowerCase() === a.toLowerCase()){
+                item.classList.add('checkedbye');
+                setTimeout(() => {
+                    item.remove();
+                    saveData();
+                    console.log(`🗑️ Task "${a}" removed by admin.`);
+                }, 500);
+                found = true;
+            }
+        })
+    } 
 };
 
 showData();
