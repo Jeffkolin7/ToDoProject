@@ -10,6 +10,8 @@ inputBox.addEventListener('keypress', function(event){
 function addTask() {
     if (inputBox.value === '') {
         alert("Please Put Your Text");
+    } else if (inputBox.value === ' '){
+        alert("Please Put Your Text");
     }
     else {
         let li = document.createElement('li');

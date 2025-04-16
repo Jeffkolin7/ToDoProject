@@ -153,5 +153,9 @@
  }
 
  ul li span:hover {
-   color: orange;
+   color: red;
  }
+
+ ul li span:active {
+  color: orangered;
+}
