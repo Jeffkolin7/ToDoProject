@@ -97,6 +97,7 @@
    position: relative;
    animation-name: myPop;
    animation-duration: 0.5s;
+   word-wrap: break-word;
  }
 
  ul li::before {
