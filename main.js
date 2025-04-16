@@ -2,6 +2,10 @@ const inputBox = document.getElementById('input-box');
 const listContainer = document.getElementById('list-container');
 
 inputBox.addEventListener('keypress', function(event){
+    if (inputBox.value.length >= 30){
+        alert("Max Char Reached");
+        return;
+    } 
     if (event.key === "Enter"){
         addTask();
     }
@@ -17,7 +21,7 @@ function addTask() {
         let li = document.createElement('li');
         li.innerHTML = inputBox.value;
         listContainer.appendChild(li);
-        let span = document.createElement('span');
+        let span = document.createElement('span'); 
         span.innerHTML = '\u00d7';
         li.appendChild(span);
     }

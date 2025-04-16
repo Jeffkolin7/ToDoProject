@@ -38,8 +38,9 @@
 
  .row {
    display: flex;
+   flex-wrap: wrap;
    align-items: center;
-   justify-content: space-between;
+   justify-content: center;
    background-color: rgb(235, 182, 86);
    border-radius: 30px;
    padding-left: 20px;
@@ -49,6 +50,7 @@
 
  input {
    flex: 1;
+   justify-content: center;
    border: none;
    outline: none;
    background: transparent;
@@ -70,6 +72,9 @@
    transition: transform 0.3s;
  }
 
+ @media (max-width: 390px ) {
+
+ }
 
  button:hover {
    background-color: rgb(206, 64, 13);
